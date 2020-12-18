@@ -1,0 +1,70 @@
+.container {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	margin-top: 5%;
+}
+
+#calc-background {
+	display: flex;
+	flex-direction: column;
+	background-color: gray;
+	width: 500px;
+	height: 700px;
+	align-items: center;
+}
+
+#header {
+	display: flex;
+	height: 100px;
+	width: 100%;
+	justify-content: space-around;
+}
+
+h1 {
+	margin-top: auto;
+}
+
+#solar {
+	height: 50px;
+	width: 200px;
+	background-color: black;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#display {
+	width: 450px;
+	height: 150px;
+	background-color: green;
+	border: 10px solid whitesmoke;
+}
+
+#numpad {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 450px;
+	height: 450px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 5px 0px;
+	background-color: yellow;
+}
+
+/* .numpad {
+	display: flex;
+	flex-wrap: wrap;
+} */
+
+#numpad > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70px;
+	height: 70px;
+	background-color: blue;
+	color: whitesmoke;
+	margin: 8px 20px;
+}
