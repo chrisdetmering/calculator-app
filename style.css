@@ -34,10 +34,20 @@ h1 {
 }
 
 #display {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
 	width: 450px;
 	height: 150px;
 	background-color: green;
 	border: 10px solid whitesmoke;
+}
+
+.output {
+	margin: 20px 20px;
+	font-family: 'Concert One', cursive;
+	font-size: 60px;
+	/* font-family: 'VT323', monospace; */
 }
 
 #numpad {
@@ -45,6 +55,7 @@ h1 {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	font-family: 'Concert One', cursive;
 	width: 450px;
 	height: 450px;
 	margin-top: 20px;
@@ -52,11 +63,6 @@ h1 {
 	padding: 5px 0px;
 	background-color: yellow;
 }
-
-/* .numpad {
-	display: flex;
-	flex-wrap: wrap;
-} */
 
 #numpad > div {
 	display: flex;
@@ -67,4 +73,9 @@ h1 {
 	background-color: blue;
 	color: whitesmoke;
 	margin: 8px 20px;
+}
+
+.number,
+.memory-btn {
+	font-size: 24px;
 }
