@@ -10,7 +10,8 @@ let index = 1;
 let operation = {
 	num1: '',
 	operator: '',
-	num2: ''
+	num2: '',
+	num3: ''
 };
 
 function handleInput(e) {
@@ -48,6 +49,15 @@ function pushInputToDisplay(input) {
 
 function performOperation(operation) {
 	if (operation.operator === 'plus') {
-		display.textContent = parseInt(operation.num1) + parseInt(operation.num2);
+		display.textContent = parseFloat(operation.num1) + parseFloat(operation.num2);
+	}
+	if (operation.operator === 'minus') {
+		display.textContent = parseInt(operation.num1) - parseInt(operation.num2);
+	}
+	if (operation.operator === 'times') {
+		display.textContent = parseInt(operation.num1) * parseInt(operation.num2);
+	}
+	if (operation.operator === 'divide') {
+		display.textContent = (parseInt(operation.num1) / parseInt(operation.num2)).toFixed(3);
 	}
 }
