@@ -55,9 +55,9 @@ function performOperation(operation) {
 		display.textContent = parseInt(operation.num1) - parseInt(operation.num2);
 	}
 	if (operation.operator === 'times') {
-		display.textContent = parseInt(operation.num1) * parseInt(operation.num2);
+		display.textContent = (parseFloat(operation.num1) * parseFloat(operation.num2)).toFixed(3);
 	}
 	if (operation.operator === 'divide') {
-		display.textContent = (parseInt(operation.num1) / parseInt(operation.num2)).toFixed(3);
+		display.textContent = parseFloat((parseInt(operation.num1) / parseInt(operation.num2)).toFixed(3));
 	}
 }
