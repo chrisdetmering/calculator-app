@@ -12,6 +12,8 @@ let operation = {
 	num3: ''
 };
 
+pushInputToDisplay('0');
+
 function handleInput(e) {
 	if (e.target.classList.contains('number')) {
 		let input = e.target.textContent;
@@ -21,7 +23,7 @@ function handleInput(e) {
 	if (e.target.classList.contains('operator')) {
 		let operator = e.target.dataset.operator;
 		if (operator != 'equals') {
-			//store operator
+			index === 1 ? (index += 1) : index;
 			storeOperation(operator);
 			return;
 		}
@@ -31,7 +33,12 @@ function handleInput(e) {
 
 function pushInputToDisplay(input) {
 	if (index === 1) {
-		operation.num1 += input;
+		if (input === '.' || operation.num1.toString().includes('.')) {
+			operation.num1 += input;
+		} else {
+			operation.num1 += input;
+			operation.num1 = parseInt(operation.num1, 10);
+		}
 		console.log(operation.num1);
 	}
 	if (index === 2) {
