@@ -3,13 +3,14 @@ let runningTotal = false;
 const display = document.querySelector('div .output');
 const numpad = document.getElementById('numpad');
 numpad.addEventListener('click', handleInput);
+const decimal = document.getElementById('decimal');
+let isDecimalActive = true;
 
 let index = 1;
 let operation = {
 	num1: '',
 	operator: '',
-	num2: '',
-	num3: ''
+	num2: ''
 };
 
 pushInputToDisplay('0');
@@ -19,15 +20,23 @@ function handleInput(e) {
 		let input = e.target.textContent;
 		pushInputToDisplay(input);
 	}
+	if (e.target.classList.contains('decimal') && isDecimalActive) {
+		let input = e.target.textContent;
+		pushInputToDisplay(input);
+		isDecimalActive = !isDecimalActive;
+	}
 
 	if (e.target.classList.contains('operator')) {
 		let operator = e.target.dataset.operator;
-		if (operator != 'equals') {
-			index === 1 ? (index += 1) : index;
-			storeOperation(operator);
-			return;
-		}
+		index === 1 ? (index += 1) : index;
+		isDecimalActive = !isDecimalActive;
+		storeOperation(operator);
+	}
+	if (e.target.classList.contains('equals')) {
 		performOperation(operation);
+	}
+	if (e.target.classList.contains('clear-btn')) {
+		clearCalculator();
 	}
 }
 
@@ -54,15 +63,16 @@ function storeOperation(operator) {
 		console.log('operator: ' + operation.operator);
 	}
 	if (index === 2) {
-		console.log('running total');
 		//if times or divide dont do operation yet
 		// need to to order of operations first
 		//alter num2
 		//then return to enter new number
+		console.log(operation);
 		performOperation(operation);
 		operation.num1 = display.textContent;
 		operation.operator = operator;
 		operation.num2 = '';
+		console.log(operation);
 		return;
 	}
 	operation['num' + index] != '' ? (index += 1) : (index = index);
@@ -81,4 +91,15 @@ function performOperation(operation) {
 	if (operation.operator === 'divide') {
 		display.textContent = parseFloat((parseInt(operation.num1) / parseInt(operation.num2)).toFixed(3));
 	}
+}
+
+function clearCalculator() {
+	console.log('clear');
+	index = 1;
+	operation = {
+		num1: '',
+		operator: '',
+		num2: ''
+	};
+	display.textContent = '0';
 }

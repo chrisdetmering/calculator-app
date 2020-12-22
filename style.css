@@ -75,6 +75,7 @@ h1 {
 }
 
 .number,
-.memory-btn {
+.memory-btn,
+.clear-btn {
 	font-size: 24px;
 }
