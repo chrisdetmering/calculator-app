@@ -9,9 +9,10 @@
 	display: flex;
 	flex-direction: column;
 	background-color: gray;
-	width: 500px;
+	width: 360px;
 	height: 700px;
 	align-items: center;
+	border-radius: 20px;
 }
 
 #header {
@@ -37,15 +38,21 @@ h1 {
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-end;
-	width: 450px;
+	width: 360px;
 	height: 150px;
-	background-color: green;
-	border: 10px solid whitesmoke;
+	background-color: black;
+	color: whitesmoke;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 }
 
 .output {
-	margin: 20px 20px;
-	font-family: 'Concert One', cursive;
+	/* margin: 20px 20px; */
+	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 40px;
+	font-family: 'Inter', sans-serif;
 	font-size: 60px;
 }
 
@@ -54,13 +61,13 @@ h1 {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	font-family: 'Concert One', cursive;
-	width: 450px;
+	font-family: 'Inter', sans-serif;
+	width: 360px;
 	height: 450px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	padding: 5px 0px;
-	background-color: yellow;
+	padding: 0px 0px;
+	background-color: black;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
 #numpad > div {
@@ -69,13 +76,29 @@ h1 {
 	align-items: center;
 	width: 70px;
 	height: 70px;
-	background-color: blue;
+	border-radius: 50%;
+	background-color: #484848;
 	color: whitesmoke;
-	margin: 8px 20px;
+	margin: 8px 5px;
+}
+
+#numpad > .operator {
+	background-color: orange;
+}
+#numpad > .equals {
+	background-color: orange;
+}
+
+#numpad > #zero-btn {
+	width: 125px;
+	border-radius: 35px;
+	justify-content: flex-start;
+	padding-left: 25px;
 }
 
 .number,
 .memory-btn,
-.clear-btn {
-	font-size: 24px;
+.clear-btn,
+.decimal {
+	font-size: 30px;
 }
