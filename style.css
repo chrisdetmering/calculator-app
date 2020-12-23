@@ -1,27 +1,30 @@
+html,
+body {
+	background: #d3cce3;
+	background: -webkit-linear-gradient(to bottom, #e9e4f0, #d3cce3);
+	background: linear-gradient(to bottom, #e9e4f0, #d3cce3);
+}
 .container {
 	display: flex;
 	height: 100vh;
 	justify-content: center;
 	margin-top: 5%;
 }
-
 #calc-background {
 	display: flex;
 	flex-direction: column;
-	background-color: gray;
 	width: 360px;
-	height: 700px;
+	height: 600px;
 	align-items: center;
 	border-radius: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 #header {
 	display: flex;
 	height: 100px;
 	width: 100%;
 	justify-content: space-around;
 }
-
 h1 {
 	margin-top: auto;
 }
@@ -33,7 +36,6 @@ h1 {
 	margin-top: auto;
 	margin-bottom: auto;
 }
-
 #display {
 	display: flex;
 	justify-content: flex-end;
@@ -44,8 +46,8 @@ h1 {
 	color: whitesmoke;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
+	font-weight: 200;
 }
-
 .output {
 	/* margin: 20px 20px; */
 	margin-top: 20px;
@@ -55,7 +57,6 @@ h1 {
 	font-family: 'Inter', sans-serif;
 	font-size: 60px;
 }
-
 #numpad {
 	display: flex;
 	flex-wrap: wrap;
@@ -64,12 +65,11 @@ h1 {
 	font-family: 'Inter', sans-serif;
 	width: 360px;
 	height: 450px;
-	padding: 0px 0px;
+	padding-bottom: 10px;
 	background-color: black;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
-
 #numpad > div {
 	display: flex;
 	justify-content: center;
@@ -81,21 +81,21 @@ h1 {
 	color: whitesmoke;
 	margin: 8px 5px;
 }
-
-#numpad > .operator {
-	background-color: orange;
-}
+#numpad > .operator,
 #numpad > .equals {
 	background-color: orange;
 }
-
+#numpad > .clear-btn,
+#numpad > .blank-btn {
+	background-color: #d0d0d0;
+	color: black;
+}
 #numpad > #zero-btn {
 	width: 125px;
 	border-radius: 35px;
 	justify-content: flex-start;
 	padding-left: 25px;
 }
-
 .number,
 .memory-btn,
 .clear-btn,

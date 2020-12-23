@@ -5,6 +5,7 @@ const numpad = document.getElementById('numpad');
 numpad.addEventListener('click', handleInput);
 const decimal = document.getElementById('decimal');
 let isDecimalActive = true;
+let isNewOperation = false;
 
 let index = 1;
 let operation = {
@@ -38,6 +39,7 @@ function handleInput(e) {
 		operation.operator = '';
 		operation.num2 = '';
 		index = 1;
+		isNewOperation = !isNewOperation;
 	}
 	if (e.target.classList.contains('clear-btn')) {
 		clearCalculator();
@@ -46,10 +48,11 @@ function handleInput(e) {
 
 function pushInputToDisplay(input) {
 	if (index === 1) {
-		if (display.textContent != 0) {
+		if (isNewOperation) {
 			console.log('you need to reset to zero first');
 			display.textContent = '';
 			operation.num1 = '';
+			isNewOperation = !isNewOperation;
 		}
 		if (input === '.' || operation.num1.toString().includes('.')) {
 			operation.num1 += input;
