@@ -4,7 +4,7 @@
 
 View it [here](https://bcherrera14.github.io/calculator-app/)
 
-![Digital Clock Image](Calculator.PNG | width=100)
+<img src="./Calculator.PNG" alt="alt text" width="250px">
 
 ## Summary
 
