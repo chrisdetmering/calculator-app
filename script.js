@@ -1,6 +1,6 @@
-//Need to fix order of operations
 //Need to add comma seporators
 // need to limit number of displayed digits
+//make sure eveyrthing resets on clear button
 
 let runningTotal = false;
 
@@ -13,10 +13,10 @@ let isNewOperation = false;
 
 let index = 1;
 let operation = {
-	num1: '',
+	num1: '0',
 	operator: '',
-	num2: '',
-	num3: '',
+	num2: '0',
+	num3: '0',
 	highOperator: ''
 };
 
@@ -35,18 +35,28 @@ function handleInput(e) {
 
 	if (e.target.classList.contains('operator')) {
 		let operator = e.target.dataset.operator;
+		if (index === 3) {
+			higherOperation(operation.num2, operation.num3);
+			operation.num3 = '0';
+			index = 2;
+		}
 		index === 1 ? (index += 1) : index;
 		isDecimalActive = true;
 		isNewOperation = true;
 		storeOperation(operator);
 	}
 	if (e.target.classList.contains('equals')) {
+		if (index === 3) {
+			higherOperation(operation.num2, operation.num3);
+		}
 		performOperation(operation);
 		operation.num1 = display.textContent;
 		operation.operator = '';
-		operation.num2 = '';
+		operation.num2 = '0';
+		operation.num3 = '0';
 		index = 1;
 		isNewOperation = !isNewOperation;
+		operation.highOperator = '';
 	}
 	if (e.target.classList.contains('clear-btn')) {
 		clearCalculator();
@@ -82,14 +92,21 @@ function pushInputToDisplay(input) {
 		console.log(operation.num2);
 	}
 	if (index === 3) {
-		operation.num3 += input;
-		operation.num3 = operation.num3.toString();
-		higherOperation(operation.num2, operation.num3);
+		// operation.num3 += input;
+		// operation.num3 = operation.num3.toString();
+		if (input === '.' || operation.num3.toString().includes('.')) {
+			operation.num3 += input;
+		} else {
+			operation.num3 += input;
+			operation.num3 = parseInt(operation.num3, 10);
+			operation.num3 = operation.num3.toString();
+		}
+		//higherOperation(operation.num2, operation.num3);
 	}
 	// display.textContent = operation['num' + index];
 	formatDisplayNumber(operation['num' + index]);
-	index === 3 ? (index -= 1) : index;
-	operation.num3 = '';
+	//index === 3 ? (index -= 1) : index;
+	//operation.num3 = '';
 	//operation.highOperator = '';
 }
 
@@ -103,7 +120,7 @@ function storeOperation(operator) {
 		// need to to order of operations first
 		//alter num2
 		//then return to enter new number
-		if (operator === 'times' || operator === 'divide') {
+		if ((operation.operator != '' && operator === 'times') || operator === 'divide') {
 			console.log('do this operation first: ' + operator);
 			operation.highOperator = operator;
 			index = 3;
@@ -160,9 +177,10 @@ function clearCalculator() {
 	isDecimalActive = true;
 	isNewOperation = true;
 	operation = {
-		num1: '',
+		num1: '0',
 		operator: '',
-		num2: ''
+		num2: '0',
+		num3: '0'
 	};
 	pushInputToDisplay('0');
 }
