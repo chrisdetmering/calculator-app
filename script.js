@@ -120,7 +120,7 @@ function storeOperation(operator) {
 		// need to to order of operations first
 		//alter num2
 		//then return to enter new number
-		if ((operation.operator != '' && operator === 'times') || operator === 'divide') {
+		if ((operation.operator != '' && operator === 'times') || (operation.operator != '' && operator === 'divide')) {
 			console.log('do this operation first: ' + operator);
 			operation.highOperator = operator;
 			index = 3;

@@ -3,6 +3,9 @@ body {
 	background: #d3cce3;
 	background: -webkit-linear-gradient(to bottom, #e9e4f0, #d3cce3);
 	background: linear-gradient(to bottom, #e9e4f0, #d3cce3);
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow-y: auto;
 }
 .container {
 	display: flex;
@@ -92,7 +95,9 @@ h1 {
 
 .operator,
 .equals {
-	background-color: orange;
+	/* background-color: orange; */
+	background-color: steelblue;
+
 	color: whitesmoke;
 }
 
@@ -101,7 +106,8 @@ h1 {
 .equals:hover,
 .equals:hover * {
 	background-color: whitesmoke;
-	color: orange;
+	/* color: orange; */
+	color: steelblue;
 }
 
 .clear-btn,
