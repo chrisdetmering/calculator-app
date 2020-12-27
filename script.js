@@ -141,4 +141,7 @@ function resetCalculator(inputType) {
 	if (inputType === 'clear-btn') {
 		display.textContent = operation.num1;
 	}
+	if (inputType === 'equals') {
+		operation.num1 = display.textContent;
+	}
 }
