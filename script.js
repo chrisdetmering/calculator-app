@@ -22,6 +22,7 @@ function handleInput(e) {
 
 	if (inputType === 'number') {
 		displayInput(input);
+		console.log(input);
 	}
 	if (inputType === 'decimal' && isDecimalActive) {
 		displayInput(input);
