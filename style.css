@@ -132,3 +132,7 @@ h1 {
 .decimal {
 	font-size: 30px;
 }
+
+i > span {
+	display: none;
+}
