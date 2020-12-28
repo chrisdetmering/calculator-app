@@ -8,6 +8,7 @@ let operation = {
 };
 
 let inputIndex = 1;
+//let maxInputLength = operation['num' + inputIndex].includes('.') ? 11 : 10;
 let isDecimalActive = true;
 let isValidInputLength = true;
 
@@ -32,6 +33,11 @@ function handleInput(e) {
 	}
 	if (inputType === 'operator') {
 		orderOperators(input);
+		let maxInputLength = display.textContent.includes('.') ? 11 : 10;
+		if (display.textContent.length > maxInputLength) {
+			display.textContent = 'Error';
+			resetCalculator('error');
+		}
 		isDecimalActive = true;
 	}
 	if (inputType === 'equals') {
@@ -40,7 +46,8 @@ function handleInput(e) {
 			display.textContent = performOperation[operation.operator](operation.num1, operation.num2).toString();
 		}
 		display.textContent = performOperation[operation.operator](operation.num1, operation.num2);
-		if (display.textContent.length > 9) {
+		let maxInputLength = display.textContent.includes('.') ? 11 : 10;
+		if (display.textContent.length > maxInputLength) {
 			display.textContent = 'Error';
 		}
 		resetCalculator(inputType);
@@ -51,16 +58,16 @@ function handleInput(e) {
 }
 
 function displayInput(input) {
-	let maxInputLength = operation['num' + inputIndex].includes('.') ? 10 : 9;
-	if (operation['num' + inputIndex].length > maxInputLength) {
+	let maxInputLength = operation['num' + inputIndex].includes('.') ? 11 : 10;
+	if (operation['num' + inputIndex].length >= maxInputLength) {
 		return;
 	}
 	if (input === '.' || operation['num' + inputIndex].includes('.')) {
 		operation['num' + inputIndex] += input;
 	} else {
 		operation['num' + inputIndex] += input;
-		operation['num' + inputIndex] = parseInt(operation['num' + inputIndex], 10);
-		operation['num' + inputIndex] = operation['num' + inputIndex].toString();
+		operation['num' + inputIndex] = parseInt(operation['num' + inputIndex], 10).toString();
+		// operation['num' + inputIndex] = operation['num' + inputIndex].toString();
 	}
 	// if (inputIndex === 1) {
 	// if (input === '.' || operation.num1.includes('.')) {
@@ -157,7 +164,7 @@ function resetCalculator(inputType) {
 	if (inputType === 'clear-btn') {
 		display.textContent = operation.num1;
 	}
-	if (inputType === 'equals') {
+	if (inputType === 'equals' || inputType === 'error') {
 		operation.num1 = display.textContent != 'Error' ? display.textContent : '0';
 	}
 }
