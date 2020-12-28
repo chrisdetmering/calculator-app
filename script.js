@@ -76,6 +76,14 @@ function orderOperators(input) {
 		operation.num2 = '0';
 		display.textContent = operation.num1;
 		inputIndex = 2;
+	} else if (
+		(inputIndex === 3 && operation.operator === 'times') ||
+		(inputIndex === 3 && operation.operator === 'divide')
+	) {
+		operation.num1 = performOperation[operation.operator](operation.num1, operation.num2).toString();
+		operation.num2 = '0';
+		display.textContent = operation.num1;
+		inputIndex = 2;
 	}
 	if (inputIndex === 4) {
 		operation.num2 = performOperation[operation.highOperator](operation.num2, operation.num3).toString();
