@@ -21,7 +21,6 @@ function handleInput(e) {
 
 	if (inputType === 'number') {
 		displayInput(input);
-		console.log(input);
 	}
 	if (inputType === 'decimal' && isDecimalActive) {
 		displayInput(input);
@@ -34,9 +33,13 @@ function handleInput(e) {
 			display.textContent = 'Error';
 			resetCalculator('error');
 		}
+		if (display.textContent === 'Infinity') {
+			display.textContent = 'Error';
+			resetCalculator('error');
+		}
 		isDecimalActive = true;
 	}
-	if (inputType === 'equals') {
+	if (inputType === 'equals' && operation.operator != '') {
 		if (operation.highOperator != '') {
 			operation.num2 = performOperation[operation.highOperator](operation.num2, operation.num3).toString();
 			display.textContent = performOperation[operation.operator](operation.num1, operation.num2).toString();
@@ -45,6 +48,10 @@ function handleInput(e) {
 		let maxInputLength = display.textContent.includes('.') ? 11 : 10;
 		if (display.textContent.length > maxInputLength) {
 			display.textContent = 'Error';
+		}
+		if (display.textContent === 'Infinity') {
+			display.textContent = 'Error';
+			resetCalculator('error');
 		}
 		resetCalculator(inputType);
 	}
@@ -64,9 +71,7 @@ function displayInput(input) {
 		operation['num' + inputIndex] += input;
 		operation['num' + inputIndex] = parseInt(operation['num' + inputIndex], 10).toString();
 	}
-	//Display Input
 	display.textContent = operation['num' + inputIndex];
-	console.log('Current Input: ' + operation['num' + inputIndex]);
 }
 
 function orderOperators(input) {
@@ -100,7 +105,6 @@ function orderOperators(input) {
 function storeOperation(operator) {
 	if (inputIndex === 1 || inputIndex === 2) {
 		operation.operator = operator;
-		console.log(operation.operator);
 	}
 	if (inputIndex === 3) {
 		operation.highOperator = operator;
