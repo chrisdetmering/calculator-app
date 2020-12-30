@@ -2,7 +2,7 @@
 
 *Digital calculator that peforms basic math operations.*
 
-View it [here](https://bcherrera14.github.io/calculator-app/)
+Try it [here](https://bcherrera14.github.io/calculator-app/)
 
 <img src="./Calculator.PNG" alt="alt text" width="250px">
 

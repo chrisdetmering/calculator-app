@@ -8,7 +8,6 @@ let operation = {
 
 let inputIndex = 1;
 let isDecimalActive = true;
-let isValidInputLength = true;
 
 const display = document.querySelector('div .output');
 display.textContent = operation.num1;
@@ -40,20 +39,7 @@ function handleInput(e) {
 		isDecimalActive = true;
 	}
 	if (inputType === 'equals' && operation.operator != '') {
-		if (operation.highOperator != '') {
-			operation.num2 = performOperation[operation.highOperator](operation.num2, operation.num3).toString();
-			display.textContent = performOperation[operation.operator](operation.num1, operation.num2).toString();
-		}
-		display.textContent = performOperation[operation.operator](operation.num1, operation.num2);
-		let maxInputLength = display.textContent.includes('.') ? 11 : 10;
-		if (display.textContent.length > maxInputLength) {
-			display.textContent = 'Error';
-		}
-		if (display.textContent === 'Infinity') {
-			display.textContent = 'Error';
-			resetCalculator('error');
-		}
-		resetCalculator(inputType);
+		handleEqualsInput(inputType);
 	}
 	if (inputType === 'clear-btn') {
 		resetCalculator(inputType);
@@ -64,6 +50,9 @@ function displayInput(input) {
 	let maxInputLength = operation['num' + inputIndex].includes('.') ? 11 : 10;
 	if (operation['num' + inputIndex].length >= maxInputLength) {
 		return;
+	}
+	if (inputIndex === 1 && operation.num1 != '0') {
+		operation.num1 = '0';
 	}
 	if (input === '.' || operation['num' + inputIndex].includes('.')) {
 		operation['num' + inputIndex] += input;
@@ -111,7 +100,7 @@ function storeOperation(operator) {
 	}
 }
 
-let performOperation = {
+const performOperation = {
 	plus: function(num1, num2) {
 		return parseFloat((parseFloat(num1) + parseFloat(num2)).toFixed(3));
 	},
@@ -125,6 +114,23 @@ let performOperation = {
 		return parseFloat((parseFloat(num1) / parseFloat(num2)).toFixed(3));
 	}
 };
+
+function handleEqualsInput(inputType) {
+	if (operation.highOperator != '') {
+		operation.num2 = performOperation[operation.highOperator](operation.num2, operation.num3).toString();
+		display.textContent = performOperation[operation.operator](operation.num1, operation.num2).toString();
+	}
+	display.textContent = performOperation[operation.operator](operation.num1, operation.num2);
+	let maxInputLength = display.textContent.includes('.') ? 11 : 10;
+	if (display.textContent.length > maxInputLength) {
+		display.textContent = 'Error';
+	}
+	if (display.textContent === 'Infinity') {
+		display.textContent = 'Error';
+		resetCalculator('error');
+	}
+	resetCalculator(inputType);
+}
 
 function resetCalculator(inputType) {
 	operation = {

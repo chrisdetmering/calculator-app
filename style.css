@@ -23,23 +23,7 @@ body {
 	border-radius: 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#header {
-	display: flex;
-	height: 100px;
-	width: 100%;
-	justify-content: space-around;
-}
-h1 {
-	margin-top: auto;
-}
 
-#solar {
-	height: 50px;
-	width: 200px;
-	background-color: black;
-	margin-top: auto;
-	margin-bottom: auto;
-}
 #display {
 	display: flex;
 	justify-content: flex-end;
@@ -94,7 +78,6 @@ h1 {
 
 .operator,
 .equals {
-	/* background-color: orange; */
 	background-color: steelblue;
 
 	color: whitesmoke;
@@ -105,7 +88,6 @@ h1 {
 .equals:hover,
 .equals:hover * {
 	background-color: whitesmoke;
-	/* color: orange; */
 	color: steelblue;
 }
 
