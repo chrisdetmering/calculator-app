@@ -8,6 +8,7 @@ let operation = {
 
 let inputIndex = 1;
 let isDecimalActive = true;
+let isNewOperation = false;
 
 const display = document.querySelector('div .output');
 display.textContent = operation.num1;
@@ -40,6 +41,7 @@ function handleInput(e) {
 	}
 	if (inputType === 'equals' && operation.operator != '') {
 		handleEqualsInput(inputType);
+		isNewOperation = true;
 	}
 	if (inputType === 'clear-btn') {
 		resetCalculator(inputType);
@@ -51,8 +53,9 @@ function displayInput(input) {
 	if (operation['num' + inputIndex].length >= maxInputLength) {
 		return;
 	}
-	if (inputIndex === 1 && operation.num1 != '0') {
+	if (inputIndex === 1 && operation.num1 != '0' && isNewOperation) {
 		operation.num1 = '0';
+		isNewOperation = false;
 	}
 	if (input === '.' || operation['num' + inputIndex].includes('.')) {
 		operation['num' + inputIndex] += input;
@@ -142,6 +145,7 @@ function resetCalculator(inputType) {
 	};
 	inputIndex = 1;
 	isDecimalActive = true;
+	isNewOperation = false;
 	if (inputType === 'clear-btn') {
 		display.textContent = operation.num1;
 	}
