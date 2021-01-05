@@ -53,9 +53,17 @@ document.querySelectorAll(".number").forEach(numberButton => {
 
 
 document.querySelector(".decimal").addEventListener("click", e => { 
-	let decimal = e.target.textContent;
-	if (!display.textContent.includes(decimal)) { 
-		display.textContent += decimal; 
+	if (!numberOne) return; 
+
+	if (!operator && !numberTwo && !display.textContent.includes(".")) { 
+		numberOne += '.'
+		display.textContent = numberOne
+		return; 
+	}
+	
+	if (!display.textContent.includes(".")) { 
+		numberTwo += '.'
+		display.textContent = numberTwo
 	}
 })
 
