@@ -13,3 +13,21 @@ I used Javascript, HTML, and CSS to create a webpage that displays a functional 
 ## Author
 
 * **Bryan Herrera** - *Full-Stack Developer* - Website | [LinkedIn](https://www.linkedin.com/in/herrerabryan/)  
+
+
+
+
+
+
+#BEFORE WE START 
+1) 100% Focus 
+2) Come back and watch 
+3) Ask questions 
+4) Take breaks
+
+
+
+
+
+
+#FOCUS: Picking the Right data structure
